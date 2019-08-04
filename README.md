@@ -6,9 +6,13 @@ To run the app - clone the repository - navigate to it in terminal with docker i
 
 	docker build -f mvcdocker/Dockerfile .
 
-once the image is built run the image on port 5010 with port 80 exposed using the command. You can get the name of the image using docker images:
+once the image is built run the image on port 5010 with port 80 exposed using this command:
 
 	docker run -p 5010:80 <image container name>
+
+You can get the name of the image using:
+
+	docker images
 
 
 Navigate to http://0.0.0.0:5010 to make sure the docker is up and running.
