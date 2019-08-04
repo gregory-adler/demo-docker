@@ -1,14 +1,14 @@
 # demo-docker
 
-This is a demonstration docker built in ASP.net. It sends a POST request to https://developer.skidata-loyalty.com//user/82/v1/user and relays the response. 
-
-This api endpoint registers a user on the skidata portal.
+This is a demonstration docker built in ASP.net. It registers a user on the skidata portal and relays it back to the origin request using the endpoint:
+	https://developer.skidata-loyalty.com//user/82/v1/user 
+	
 
 To run the app: clone the repository, navigate to root with docker installed and run - 
 
 	docker build -f mvcdocker/Dockerfile .
 
-once the image is built, run it on port 5010 with port 80 exposed using:
+Once the image is built, run it on port 5010 with port 80 exposed using:
 
 	docker run -p 5010:80 <image container name>
 
