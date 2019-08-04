@@ -10,7 +10,7 @@ To run the app: clone the repository, navigate to root with docker installed and
 
 Once the image is built, run it on port 5010 with port 80 exposed using:
 
-	docker run -p 5010:80 <image container name>
+	docker run -p 5010:80 <image name>
 
 If you can't find the image name you can get it using:
 
