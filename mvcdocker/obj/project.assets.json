@@ -11805,11 +11805,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/gregadler/Documents/GitHub/mvcdocker/mvcdocker/mvcdocker.csproj",
+      "projectUniqueName": "/Users/gregadler/Documents/GitHub/demo-docker/mvcdocker/mvcdocker.csproj",
       "projectName": "mvcdocker",
-      "projectPath": "/Users/gregadler/Documents/GitHub/mvcdocker/mvcdocker/mvcdocker.csproj",
+      "projectPath": "/Users/gregadler/Documents/GitHub/demo-docker/mvcdocker/mvcdocker.csproj",
       "packagesPath": "/Users/gregadler/.nuget/packages/",
-      "outputPath": "/Users/gregadler/Documents/GitHub/mvcdocker/mvcdocker/obj/",
+      "outputPath": "/Users/gregadler/Documents/GitHub/demo-docker/mvcdocker/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
