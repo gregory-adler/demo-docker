@@ -22,7 +22,7 @@ Navigate to http://0.0.0.0:5010 to make sure the docker is up and running.
 # Code Notes
 Main files - 
 
-Controllers/Submit.cs which handles the networking for the app and most of the logic.
+Controllers/Submit.cs-  handles the networking for the app and most of the logic.
 
 Startup.cs - handles Cors logic
 
