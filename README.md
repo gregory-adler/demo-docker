@@ -16,3 +16,7 @@ You can get the name of the image using:
 
 
 Navigate to http://0.0.0.0:5010 to make sure the docker is up and running.
+
+
+# Code Notes
+The main part of the programming is in Controllers/Submit.cs which handles the networking for the app and most of the logic.
