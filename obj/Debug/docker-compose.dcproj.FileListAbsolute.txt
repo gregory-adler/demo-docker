@@ -1,0 +1,1 @@
+/Users/gregadler/Documents/GitHub/mvcdocker/obj/Debug/docker-compose.dcproj.CoreCompileInputs.cache

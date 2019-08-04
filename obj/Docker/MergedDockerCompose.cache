@@ -1,0 +1,19 @@
+services:
+  mvcdocker:
+    build:
+      context: /Users/gregadler/Documents/GitHub/mvcdocker
+      dockerfile: mvcdocker/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTPS_PORT: '44389'
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: mvcdocker
+    ports:
+    - published: 39914
+      target: 80
+    - published: 44389
+      target: 443
+    volumes:
+    - /Users/gregadler/.aspnet/https:/root/.aspnet/https:ro
+    - /Users/gregadler/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'
