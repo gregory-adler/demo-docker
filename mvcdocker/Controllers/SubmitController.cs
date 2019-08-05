@@ -78,8 +78,8 @@ namespace mvcdocker
                 RequestUri = new Uri("https://api.skidataus.com/user/82/v1/user"),
                 Headers = {
                     { "x-api-key", "5aKKx1iG4+V7S1qtug1DVBTPMs0u/F4sQ0Z0PBnmos8" }
-			    },
-				Content = content
+                },
+                Content = content
 			};
 
             /* statement to print parameters
