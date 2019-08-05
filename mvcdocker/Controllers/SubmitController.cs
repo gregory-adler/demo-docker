@@ -57,17 +57,17 @@ namespace mvcdocker
         public async Task<HttpResponseMessage> PostUser(ArrayList userParams)
         {
 
-			// Formats parameters
-			var values = new Dictionary<string, string>
-			{
-				 { "Username", userParams[0].ToString()},
-				 { "ReferredBy",  "0" },
-				 { "RegistrationChannel", "string"  },
-				 { "CreateRegistrationToken" , "true" },
-				 { "CodeChallenge", "string" },
-				 { "RegistrationToken", "string"},
-				 { "SendRegistrationEmail", "true" },
-				 { "UserProfileProperties", "None" },
+            // Formats parameters
+            var values = new Dictionary<string, string>
+            {
+                 { "Username", userParams[0].ToString()},
+                 { "ReferredBy",  "0" },
+                 { "RegistrationChannel", "string"  },
+                 { "CreateRegistrationToken" , "true" },
+                 { "CodeChallenge", "string" },
+                 { "RegistrationToken", "string"},
+                 { "SendRegistrationEmail", "true" },
+                 { "UserProfileProperties", "None" }
 			 };
 
             var content = new FormUrlEncodedContent(values);
