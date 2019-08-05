@@ -62,18 +62,15 @@ namespace mvcdocker
             {
                  { "Username", userParams[0].ToString()},
                  { "EmailAddress", userParams[1].ToString() },
-                 { "ReferredBy",  "0" },
-                 { "RegistrationChannel", "string"  },
-                 { "CreateRegistrationToken" , "true" },
-                 { "CodeChallenge", "string" },
-                 { "SendRegistrationEmail", "true" },
-                 { "UserProfileProperties", "None" },
-
+                 { "Password", userParams[2].ToString() },
+                 { "ReferredBy",  "a" },
+                 { "RegistrationChannel", "the"  },
+                 { "CreateRegistrationToken" , "No" },
+                 {"CodeChallenge", "yes" },
+                 { "SendRegistrationEmail", "No" }
              };
 
             var content = new FormUrlEncodedContent(values);
-
-            Console.WriteLine(content.ToString());
 
             /* statement to print parameters
             foreach (KeyValuePair<string, string> pair in values)
@@ -86,14 +83,15 @@ namespace mvcdocker
             var response = await client.PostAsync("https://developer.skidata-loyalty.com/user/82/v1/user", content);
             // alternative endpoint: "https://testportal.skidataus.com/user/82/v1/user"
 
-             // Console.WriteLine(response);
-             // string responseBody = await response.Content.ReadAsStringAsync();
-             // Console.WriteLine("content");
-             // Console.WriteLine(responseBody);
+            /* Prints response, response body, and status code (debugging)
+             Console.WriteLine(response);
+             string responseBody = await response.Content.ReadAsStringAsync();
+             Console.WriteLine("content");
+             Console.WriteLine(responseBody);
            
-            // Console.WriteLine("Response StatusCode");
-            // Console.WriteLine(response.StatusCode);
-            
+            Console.WriteLine("Response StatusCode");
+            Console.WriteLine(response.StatusCode);
+            */
 
             return response;
 
