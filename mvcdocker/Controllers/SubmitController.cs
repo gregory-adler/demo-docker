@@ -73,12 +73,12 @@ namespace mvcdocker
             var content = new FormUrlEncodedContent(values);
 
 			var httpRequestMessage = new HttpRequestMessage
-			{
-				Method = HttpMethod.Post,
-				RequestUri = new Uri("https://api.skidataus.com/user/82/v1/user"),
-				Headers = {
-				{ "x-api-key", "5aKKx1iG4+V7S1qtug1DVBTPMs0u/F4sQ0Z0PBnmos8" }
-			},
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri("https://api.skidataus.com/user/82/v1/user"),
+                Headers = {
+                    { "x-api-key", "5aKKx1iG4+V7S1qtug1DVBTPMs0u/F4sQ0Z0PBnmos8" }
+			    },
 				Content = content
 			};
 
@@ -90,7 +90,7 @@ namespace mvcdocker
             */
 
 			// API call
-			var response = client.SendAsync(httpRequestMessage).Result;
+            var response = client.SendAsync(httpRequestMessage).Result;
 
 			/* Prints response, response body, and status code (debugging)
 			Console.WriteLine(response);
