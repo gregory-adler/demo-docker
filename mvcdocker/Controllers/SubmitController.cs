@@ -68,7 +68,7 @@ namespace mvcdocker
                  { "RegistrationToken", "string"},
                  { "SendRegistrationEmail", "true" },
                  { "UserProfileProperties", "None" }
-			 };
+             };
 
             var content = new FormUrlEncodedContent(values);
 
