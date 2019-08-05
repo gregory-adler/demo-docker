@@ -72,7 +72,7 @@ namespace mvcdocker
 
             var content = new FormUrlEncodedContent(values);
 
-			var httpRequestMessage = new HttpRequestMessage
+            var httpRequestMessage = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri("https://api.skidataus.com/user/82/v1/user"),
@@ -82,29 +82,28 @@ namespace mvcdocker
 				Content = content
 			};
 
-			/* statement to print parameters
+            /* statement to print parameters
             foreach (KeyValuePair<string, string> pair in values)
                 {
                     Console.WriteLine("{0}, {1}", pair.Key, pair.Value);
                 }
             */
 
-			// API call
+            // API call
             var response = client.SendAsync(httpRequestMessage).Result;
+			string responseBody = await response.Content.ReadAsStringAsync();
+			Console.WriteLine(responseBody);
 
 			/* Prints response, response body, and status code (debugging)
-			Console.WriteLine(response);
-             string responseBody = await response.Content.ReadAsStringAsync();
-             Console.WriteLine("content");
-             Console.WriteLine(responseBody);
+                Console.WriteLine(response);
+                Console.WriteLine("content");
+                Console.WriteLine(responseBody);
 
 
-			Console.WriteLine("Response StatusCode");
-            Console.WriteLine(response.StatusCode);
-
-            return response;
+                Console.WriteLine("Response StatusCode");
+                Console.WriteLine(response.StatusCode);
             */
-
+			return response;
 		}
 	}
 }
