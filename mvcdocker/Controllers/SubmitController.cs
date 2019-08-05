@@ -13,9 +13,8 @@ namespace mvcdocker
         // Create HTTP Client
         private static readonly HttpClient client = new HttpClient();
 
-
-        // GET: /submit/
-        public IActionResult Index()
+		// GET: /submit/
+		public IActionResult Index()
         {
             return View();
         }
@@ -68,33 +67,44 @@ namespace mvcdocker
                  { "RegistrationToken", "string"},
                  { "SendRegistrationEmail", "true" },
                  { "UserProfileProperties", "None" }
-             };
+			 };
+
 
             var content = new FormUrlEncodedContent(values);
 
-            /* statement to print parameters
+			var httpRequestMessage = new HttpRequestMessage
+			{
+				Method = HttpMethod.Post,
+				RequestUri = new Uri("https://api.skidataus.com/user/82/v1/user"),
+				Headers = {
+				{ "x-api-key", "5aKKx1iG4+V7S1qtug1DVBTPMs0u/F4sQ0Z0PBnmos8" }
+			},
+				Content = content
+			};
+
+			/* statement to print parameters
             foreach (KeyValuePair<string, string> pair in values)
                 {
                     Console.WriteLine("{0}, {1}", pair.Key, pair.Value);
                 }
             */
 
-            // API call
-            var response = await client.PostAsync("https://developer.skidata-loyalty.com/user/82/v1/user", content);
-            // alternative endpoint: "https://testportal.skidataus.com/user/82/v1/user"
+			// API call
+			var response = client.SendAsync(httpRequestMessage).Result;
 
-            /* Prints response, response body, and status code (debugging)
-             Console.WriteLine(response);
+			/* Prints response, response body, and status code (debugging)
+			Console.WriteLine(response);
              string responseBody = await response.Content.ReadAsStringAsync();
              Console.WriteLine("content");
              Console.WriteLine(responseBody);
-           
-            Console.WriteLine("Response StatusCode");
+
+
+			Console.WriteLine("Response StatusCode");
             Console.WriteLine(response.StatusCode);
-            */
 
             return response;
+            */
 
-        }
-    }
+		}
+	}
 }
