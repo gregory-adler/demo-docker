@@ -1,7 +1,7 @@
 # demo-docker
 
 This is a demonstration docker built in ASP.net. It registers a user on the skidata portal and relays it back to the origin request using the endpoint:
-	https://developer.skidata-loyalty.com//user/82/v1/user 
+	https://api.skidataus.com/user/82/v1/user
 	
 
 To run the app: clone the repository, navigate to root of app with docker installed and run - 
