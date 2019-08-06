@@ -5,6 +5,8 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Text;
+using Newtonsoft.Json.Linq;
 
 namespace mvcdocker
 {
@@ -12,6 +14,7 @@ namespace mvcdocker
     {
         // Create HTTP Client
         private static readonly HttpClient client = new HttpClient();
+        string userID = "74";
 
 		// GET: /submit/
 		public IActionResult Index()
@@ -38,11 +41,11 @@ namespace mvcdocker
             // Posts to skidata api endpoint
             var response = await PostUser(userParams);
 
-
-            // Success
-            if (response.StatusCode.ToString() == "OK"){
-                // Console.WriteLine("Success");
-                return response;
+			// Success
+			if (response.StatusCode.ToString() == "OK"){
+                Console.WriteLine("Success");
+				response.ReasonPhrase = userID;
+				return response;
             }
 
             // Failure
@@ -56,54 +59,42 @@ namespace mvcdocker
         public async Task<HttpResponseMessage> PostUser(ArrayList userParams)
         {
 
-            // Formats parameters
-            var values = new Dictionary<string, string>
-            {
-                 { "Username", userParams[0].ToString()},
-                 { "ReferredBy",  "0" },
-                 { "RegistrationChannel", "string"  },
-                 { "CreateRegistrationToken" , "true" },
-                 { "CodeChallenge", "string" },
-                 { "RegistrationToken", "string"},
-                 { "SendRegistrationEmail", "true" },
-                 { "UserProfileProperties", "None" }
-            };
+			// Formats parameters
 
+			string username = userParams[0].ToString();
 
-            var content = new FormUrlEncodedContent(values);
+            string p= $@"{{'Username':'{ username}','RegistrationChannel': 'Example'}}";
+
+            var content = new StringContent(p, Encoding.UTF8, "application/json");
+            //var content = new FormUrlEncodedContent(values);
 
             var httpRequestMessage = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri("https://api.skidataus.com/user/82/v1/user"),
                 Headers = {
-                    { "x-api-key", "5aKKx1iG4+V7S1qtug1DVBTPMs0u/F4sQ0Z0PBnmos8" }
+                    { "x-api-key", "kzD8ahr7ld8/78xfCLpUY9hkNPRZq2Yx7w5MQdyLTt8=" }
                 },
-                Content = content
             };
 
-            /* statement to print parameters
-            foreach (KeyValuePair<string, string> pair in values)
-                {
-                    Console.WriteLine("{0}, {1}", pair.Key, pair.Value);
-                }
-            */
+            httpRequestMessage.Content = content;
 
             // API call
             var response = client.SendAsync(httpRequestMessage).Result;
 			string responseBody = await response.Content.ReadAsStringAsync();
+            JObject json = JObject.Parse(responseBody);
+
+            Console.WriteLine("after call");
+			Console.WriteLine(response);
 			Console.WriteLine(responseBody);
+            Console.WriteLine("Response StatusCode");
+            Console.WriteLine(response.StatusCode);
+            Console.WriteLine("JSON");
 
-			/* Prints response, response body, and status code (debugging)
-                Console.WriteLine(response);
-                Console.WriteLine("content");
-                Console.WriteLine(responseBody);
+            // gets new user id
+            userID = json.First.ToString();
 
-
-                Console.WriteLine("Response StatusCode");
-                Console.WriteLine(response.StatusCode);
-            */
-			return response;
+            return response;
 		}
 	}
 }
