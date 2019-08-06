@@ -60,9 +60,7 @@ namespace mvcdocker
         // Posts user to skidata User registration endpoint
         public async Task<HttpResponseMessage> PostUser(ArrayList userParams)
         {
-
             // Formats parameters
-
             string username = userParams[0].ToString();
 
             string p = $@"{{'Username':'{ username}','RegistrationChannel': 'Example'}}";
