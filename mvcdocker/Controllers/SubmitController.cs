@@ -57,6 +57,7 @@ namespace mvcdocker
             }
         }
 
+        // Posts user to skidata User registration endpoint
         public async Task<HttpResponseMessage> PostUser(ArrayList userParams)
         {
 
@@ -67,7 +68,6 @@ namespace mvcdocker
             string p = $@"{{'Username':'{ username}','RegistrationChannel': 'Example'}}";
 
             var content = new StringContent(p, Encoding.UTF8, "application/json");
-            //var content = new FormUrlEncodedContent(values);
 
             var httpRequestMessage = new HttpRequestMessage
             {
@@ -86,8 +86,8 @@ namespace mvcdocker
             JObject json = JObject.Parse(responseBody);
 
             /* debug statements
-			Console.WriteLine(response);
-			Console.WriteLine(responseBody);
+            Console.WriteLine(response);
+            Console.WriteLine(responseBody);
             Console.WriteLine("Response StatusCode");
             Console.WriteLine(response.StatusCode);
             */
