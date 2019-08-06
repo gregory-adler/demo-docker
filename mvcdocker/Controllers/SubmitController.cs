@@ -16,8 +16,8 @@ namespace mvcdocker
         private static readonly HttpClient client = new HttpClient();
         string userID = "74";
 
-		// GET: /submit/
-		public IActionResult Index()
+        // GET: /submit/
+        public IActionResult Index()
         {
             return View();
         }
@@ -41,11 +41,12 @@ namespace mvcdocker
             // Posts to skidata api endpoint
             var response = await PostUser(userParams);
 
-			// Success
-			if (response.StatusCode.ToString() == "OK"){
+            // Success
+            if (response.StatusCode.ToString() == "OK")
+            {
                 Console.WriteLine("Success");
-				response.ReasonPhrase = userID;
-				return response;
+                response.ReasonPhrase = userID;
+                return response;
             }
 
             // Failure
@@ -59,11 +60,11 @@ namespace mvcdocker
         public async Task<HttpResponseMessage> PostUser(ArrayList userParams)
         {
 
-			// Formats parameters
+            // Formats parameters
 
-			string username = userParams[0].ToString();
+            string username = userParams[0].ToString();
 
-            string p= $@"{{'Username':'{ username}','RegistrationChannel': 'Example'}}";
+            string p = $@"{{'Username':'{ username}','RegistrationChannel': 'Example'}}";
 
             var content = new StringContent(p, Encoding.UTF8, "application/json");
             //var content = new FormUrlEncodedContent(values);
@@ -81,20 +82,20 @@ namespace mvcdocker
 
             // API call
             var response = client.SendAsync(httpRequestMessage).Result;
-			string responseBody = await response.Content.ReadAsStringAsync();
+            string responseBody = await response.Content.ReadAsStringAsync();
             JObject json = JObject.Parse(responseBody);
 
-            Console.WriteLine("after call");
+            /* debug statements
 			Console.WriteLine(response);
 			Console.WriteLine(responseBody);
             Console.WriteLine("Response StatusCode");
             Console.WriteLine(response.StatusCode);
-            Console.WriteLine("JSON");
+            */
 
-            // gets new user id
+            // sets new user id
             userID = json.First.ToString();
 
             return response;
-		}
-	}
+        }
+    }
 }
