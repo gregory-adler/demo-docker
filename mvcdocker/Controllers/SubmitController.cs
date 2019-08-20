@@ -14,7 +14,7 @@ namespace mvcdocker
     {
         // Create HTTP Client
         private static readonly HttpClient client = new HttpClient();
-        string userID = "74";
+        string userID = " ";
 
         // GET: /submit/
         public IActionResult Index()
